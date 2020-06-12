@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="quotation_form_view_inherit" model="ir.ui.view">
+            <field name="name">quotation.form.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="customer_discount_code"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="discount_estimated"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="quotation_tree_view_inherit" model="ir.ui.view">
+            <field name="name">quotation.tree.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="customer_discount_code"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_tree_view_inherit" model="ir.ui.view">
+            <field name="name">sale.order.tree.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="customer_discount_code"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

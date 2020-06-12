@@ -19,7 +19,7 @@ class SaleOder(models.Model):
                 rec.discount_estimated = rec.amount_total * (100 - discount_vals) / 100
             else:
                 rec.discount_estimated = rec.amount_total
-                
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
