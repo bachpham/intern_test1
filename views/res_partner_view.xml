@@ -8,7 +8,8 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='vat']" position="after">
-                    <field name="customer_discount_code" groups="odoo_rm_ro-016_test1.group_advanced_sale"/>
+                    <field name="customer_discount_code" groups="intern_test1.group_advanced_sale"/>
+                    <field name="valid_code" invisible="1"/>
                 </xpath>
             </field>
         </record>
@@ -19,7 +20,8 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='display_name']" position="after">
-                    <field name="customer_discount_code" groups="odoo_rm_ro-016_test1.group_advanced_sale"/>
+                    <field name="customer_discount_code" groups="intern_test1.group_advanced_sale"/>
+                    <field name="valid_code" invisible="1"/>
                 </xpath>
             </field>
         </record>

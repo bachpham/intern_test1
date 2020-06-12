@@ -9,6 +9,7 @@ class SaleOder(models.Model):
     discount_estimated = fields.Monetary(string='Estimated Discount Total', readonly=True, store=True,
                                          compute='estimate_discount_total')
     customer_discount_code = fields.Text(string="Customer Discount Code", related='partner_id.customer_discount_code')
+    valid_code = fields.Boolean(string='Valid Code', store=True, related='partner_id.valid_code', readonly=True)
 
     @api.depends('amount_total', 'partner_id', 'customer_discount_code')
     def estimate_discount_total(self):
@@ -26,4 +27,16 @@ class ResPartner(models.Model):
     _description = 'Res Partner Inherit'
 
     customer_discount_code = fields.Text(string="Customer Code")
+    valid_code = fields.Boolean(string='Valid Code', compute='check_valid', store=True)
+
+    @api.depends('customer_discount_code')
+    def check_valid(self):
+        for rec in self:
+            if not rec.customer_discount_code:
+                rec.valid_code = False
+            else:
+                if re.match("^VIP_([1-9]|[1-9][0-9]|0[1-9])$", rec.customer_discount_code):
+                    rec.valid_code = True
+                else:
+                    rec.valid_code = False
 

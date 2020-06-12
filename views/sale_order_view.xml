@@ -38,5 +38,19 @@
             </field>
         </record>
 
+        <record id="special_customer_filter" model="ir.ui.view">
+            <field name="name">special.customer.filter</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                    <separator/>
+                    <filter string="Special Customer" name="valid_code"
+                            domain="[('valid_code','=',True)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </odoo>
