@@ -26,6 +26,17 @@
             </field>
         </record>
 
+        <record id="filter_valid_customer_code_action" model="ir.actions.act_window">
+            <field name="name">Valid Customers Code</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('valid_code', '=', True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="valid_customer_code" name="Customers Have Valid Code" parent="sale.sale_menu_root"
+                  action="filter_valid_customer_code_action" sequence="6"/>
+
 
     </data>
 </odoo>
